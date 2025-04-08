@@ -4,7 +4,7 @@
 [download-url]: https://www.nuget.org/packages/Instructor.Core
 
 <h1>
-<img src="https://raw.githubusercontent.com/code-dispenser/Instructor/main/assets/icon-64.png" align="center" alt="Instructor icon" /> Instructor
+<img src="https://raw.githubusercontent.com/code-dispenser/Instructor/main/assets/Icon-64.png" align="center" alt="Instructor icon" /> Instructor
 </h1>
 <!--
 # ![icon](https://raw.githubusercontent.com/code-dispenser/Instructor/main/assets/icon-64.png) When
@@ -14,7 +14,7 @@
 ## Overview
 **Instructor** is a lightweight, minimalist library focused on one job: dispatching instructions (commands and queries) to their respective handlers.
 
-It integrates seamlessly with your existing IoC container—like Autofac or Microsoft.Extensions.DependencyInjection—without enforcing conventions or adding unnecessary abstractions. All handler resolution is delegated to the container you already use.
+It integrates seamlessly with your existing IoC containerâ€”like Autofac or Microsoft.Extensions.DependencyInjectionâ€”without enforcing conventions or adding unnecessary abstractions. All handler resolution is delegated to the container you already use.
 
 ## Example Usage
 

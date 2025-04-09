@@ -20,9 +20,13 @@ It integrates seamlessly with your existing IoC container—like Autofac or Micr
 
 A working example can be found in the [Instructor GitHub Repository.](https://github.com/code-dispenser/Instructor)
 
+**Note:** The *None* type (aka Unit) shown below is not within the Instructor.Core package, its within the demo project.
+
 ### Define Commands and Queries (aka Instructions)
 Just implement IInstruction&lt;TValue&gt; for each instruction.
 ```csharp   
+using Instructor.Core.Common.Seeds;
+
 public class AddCustomerCommand: IInstruction<None>
 {
     public Guid   CustomerID   { get;}
@@ -44,6 +48,7 @@ public class GetCustomerQuery(Guid customerID) : IInstruction<CustomerData>
 Implement IInstructionHandler&lt;TInstruction, TValue&gt; or optionally the marker interfaces ICommandHandler&lt;TInstruction, TValue&gt; 
 or IQueryHandler&lt;TInstruction, TValue&gt;.  
 ```csharp   
+using Instructor.Core.Common.Seeds;
 
 public class AddCustomerCommandHandler : ICommandHandler<AddCustomerCommand, None>
 {
@@ -71,7 +76,11 @@ public class GetCustomerQueryHandler : IQueryHandler<GetCustomerQuery, CustomerD
 
 #### Register the InstructionDispatcher and its factory delegate that defers resolution of instruction handlers via the underlying IoC container 
 Autofcac example:
- ```csharp
+
+```csharp   
+ using Instructor.Core;
+ using Instructor.Core.Common.Seeds;
+
     /*
         * Scan assemblies or add handlers manually i.e. builder.RegisterType<AddCustomerCommandHandler>().As<IInstructionHandler<AddCustomerCommand, None>>()
     */
@@ -86,6 +95,9 @@ Autofcac example:
 ```
 Microsoft.Extensions.DependencyInjection example:
  ```csharp
+ using Instructor.Core;
+ using Instructor.Core.Common.Seeds;
+
     /*
         * Add handlers manually or get a package like Scrutor to scan assemblies
     */
@@ -98,6 +110,8 @@ Microsoft.Extensions.DependencyInjection example:
 
 #### Send your instructions via the InstructionDispatcher to be processed by the handlers
  ```csharp
+ using Instructor.Core;
+ using Instructor.Core.Common.Seeds;
 
     private readonly IInstructionDispatcher _instructionDispatcher;//set by constructor injection
 
